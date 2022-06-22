@@ -1,3 +1,4 @@
+from itertools import product
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
@@ -46,4 +47,29 @@ class Profile(models.Model):
         
         
 class Product(models.Model):
+    '''
+    Model for products class
+    '''
+    product_name = models.CharField(max_length=40)
+    business_number = models.IntegerField(blank=True,null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    area = models.ForeignKey(Area,on_delete=models.CASCADE)
+    product_description = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.product_name
+
+    def create_product(self):
+        self.save()
+
+    def delete_product(self):
+        self.delete()
+        
+    def update_product(self):
+        self.save()
+
+    @classmethod
+    def search_product(cls,search_term):
+        product = Product.objects.get(product_name__icontains=search_term)
+        return product
     
