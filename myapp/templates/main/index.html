@@ -2,27 +2,41 @@
 {% load static %}
 
 {% block content %}
-<h3 class="trycss" >Aknowledge me</h3>
+<h3 class="trycss" >We're working broo</h3>
 <div class="container">
+    <div class="row">
+        <h2 class="text-center">picha pale broo</h2>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center skinhome">
+            <h3 class="homeh3">TAKE CARE OF YOUR SKIN</h3>
+            <P class="homep">Get the best skin care products in the market.</P>
+        </div>
+        <div class="col-3 text-center skinproduct">
+            <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">
+            <a href=""><button> Order the product</button></a>
+        </div>
+        <!-- box flex-->
+        <div class="col-3 text-center">
+            <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">
+            <a href=""><button></button></a>
+        </div>
+        <div class="col-3 text-center">
+            <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">
+            <a href=""><button></button></a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-6">
             <img src="{% static '/images/blackmakeup.jpg' %}" alt="welcome" width="100%">
         </div>
         <div class="col-6 text-center">
-            <h3>FACE YOUR<br>BEAUTY WITH US.</h3>
-            <P>Join our community and get access to<br>beauty products around you. </P>
+            <div class="skinproduct">
+            <h3 class="homeh3">FACE YOUR<br>BEAUTY WITH US.</h3>
+            <P class="homep">Join our community and get access to<br>beauty products around you. </P>
             <a href=""><button>Sign Up</button></a>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-6 text-center">
-            <h3>FACE YOUR<br>BEAUTY WITH US.</h3>
-            <P>Join our community and get access to<br>beauty products around you. </P>
-            <a href=""><button>Sign Up</button></a>
-        </div>
-        <div class="col-6">
-            <img src="{% static '/images/blackmakeup.jpg' %}" alt="welcome" width="100%">
+            </div>
         </div>
     </div>
 </div>
-{% endblock%}
+{% endblock %}
