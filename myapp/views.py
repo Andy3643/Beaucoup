@@ -25,3 +25,7 @@ def register(request):
         'form':form
     }
     return render(request,"users/sign-up.html",context)
+
+#@login_required
+def Index_view(request):
+    return render(request,"main/index.html")
