@@ -1,0 +1,25 @@
+.welcomediv1{
+    padding-top: 35vh;
+}
+#welcomeh1{
+    color: red;
+    font-family: 'Merriweather', serif;
+}
+#welcomepi{
+    font-family: 'Courgette', cursive;
+}
+#welcomebtn{
+    background-color: white;
+    border-color: red;
+    border-radius: 15%;
+    margin-left: 20px;
+}
+#welcomebtns{
+    padding-top: 30px;
+}
+.redbottomline{
+    background-color: red;
+    height: 0.5vh;
+    margin-top: 30vh;
+
+}

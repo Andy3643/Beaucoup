@@ -1,1 +1,22 @@
-<h1> acknowledge me</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1 class="text-center">Aknowlwdge me</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-6 text-center welcomediv1">
+            <h1 id="welcomeh1">BEAUCOUP</h1>
+            <P id="welcomepi">Beauty and Cosmetics Solutions.</P>
+            <div id="welcomebtns">
+            <a href="{% url 'login'%}"><button  id="welcomebtn">Get Started</button></a>
+            <a href="#"><button  id="welcomebtn">Sale Now</button></a>
+            </div>
+            <div class="redbottomline"></div>
+        </div>
+        <div class="col-6">
+            <img src="{% static '/images/welcome.jpg' %}" alt="welcome" width="100%">
+        </div>
+    </div>
+</div>
+{% endblock%}
