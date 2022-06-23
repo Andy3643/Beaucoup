@@ -3,6 +3,7 @@
 
 {% block content %}
 <h3 class="trycss" >We're working broo</h3>
+<a style="color: white;" class="nav-link" href="{% url 'user_profile' %}">My Profile</a>
 <div class="container">
     <div class="row">
         <h2 class="text-center">picha pale broo</h2>
@@ -12,10 +13,13 @@
             <h3 class="homeh3">TAKE CARE OF YOUR SKIN</h3>
             <P class="homep">Get the best skin care products in the market.</P>
         </div>
+        {% for product in products%}
         <div class="col-3 text-center skinproduct">
-            <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">
+            <img src="{{product.product_pic.url}}" alt="image" width="90%">
+            <p>{{ product.product_description}}</p>
             <a href=""><button> Order the product</button></a>
         </div>
+        {% endfor %}
         <!-- box flex-->
         <div class="col-3 text-center">
             <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">

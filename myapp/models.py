@@ -2,6 +2,8 @@ from itertools import product
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 
 class Area(models.Model):
@@ -20,17 +22,16 @@ class Area(models.Model):
         
     def __str__(self):
          return self.name
-     
-     
+  
 class Profile(models.Model):
     '''
     class for user profiles
     '''
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    #id_number = models.IntegerField(blank=True,null=True)
+    id_number = models.IntegerField(blank=True,null=True)
     profile_pic = CloudinaryField('image')
-    email = models.EmailField()
-    bio = models.TextField(blank=True)
+    user_email = models.EmailField()
+    user_bio = models.TextField(blank=True)
     area = models.ForeignKey(Area,on_delete=models.CASCADE,blank=True,null=True)
 
     
@@ -45,16 +46,31 @@ class Profile(models.Model):
     def save_user_profile(sender,instance,**kwargs):
         instance.profile.save()
         
-        
+
+class Seller(models.Model):
+    '''
+    Model for seller profile
+    '''
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    profile_pic = CloudinaryField('image')
+    #product = models.ForeignKey(Product,on_delete=models.CASCADE,blank=True,null=True)
+    seller_email = models.EmailField()
+    business_number = models.IntegerField()
+    seller_bio = models.TextField(blank=True)
+    area = models.ForeignKey(Area,on_delete=models.CASCADE,blank=True,null=True)
+      
 class Product(models.Model):
     '''
     Model for products class
     '''
     product_name = models.CharField(max_length=40)
-    business_number = models.IntegerField(blank=True,null=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    area = models.ForeignKey(Area,on_delete=models.CASCADE)
+    product_pic = CloudinaryField('image')
+    #user = models.ForeignKey(User,on_delete=models.CASCADE)
+    #area = models.ForeignKey(Area,on_delete=models.CASCADE)
     product_description = models.CharField(max_length=255)
+    price = models.IntegerField()
+    seller = models.ForeignKey(Seller,on_delete=models.CASCADE,blank=True,null=True)
+    area = models.ForeignKey(Area,on_delete=models.CASCADE,blank=True,null=True)
     
     def __str__(self):
         return self.product_name

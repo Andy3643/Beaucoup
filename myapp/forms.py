@@ -15,3 +15,23 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
+        
+
+class UserUpdateForm(forms.ModelForm):
+    '''
+    Form to update user profile
+    '''
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username','email']
+
+class ProfileUpdateForm(forms.ModelForm):
+    '''
+    Form to update user profile picture
+    '''
+    area = forms.ModelChoiceField(queryset=Area.objects.all())
+    class Meta:
+        model = Profile
+        fields = ['user_bio','area','profile_pic']
