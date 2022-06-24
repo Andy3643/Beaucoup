@@ -80,3 +80,44 @@ def profile(request):
         'p_form':p_form 
     }
     return render(request,'users/profile.html',context)
+
+#@login_required
+# def new_product(request):
+#     '''
+#     upload new product
+#     '''
+#     current_user = request.user
+#     current_area_user = request.user.profile.area
+#     if current_area_user:
+#         if request.method == "POST":
+#             form = ProductUpload(request.POST) 
+#             if form.is_valid():
+#                 product_name = form.save(commit=False)
+#                 product_name.seller = current_user
+#                 product_name.area = current_area_user
+#                 product_name.save()
+#                 return redirect(Index_view)
+            
+#             else:
+#                 form = ProductUpload()
+#                 return render(request,"product/upload-product.html",{"form":form})
+
+
+def new_product(request):
+    '''
+    upload new product
+    '''
+    if request.method == "POST":
+        form = ProductUpload(request.POST,request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = current_user
+            product.save()
+            return redirect('home')
+    else:
+        form = Product()
+    context = {
+        "form":form
+    }
+
+    return render(request,"product/upload-product.html",context)

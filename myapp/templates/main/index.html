@@ -2,13 +2,14 @@
 {% load static %}
 
 {% block content %}
-<h3 class="trycss" >We're working broo</h3>
+<!-- <h3 class="trycss" >We're working broo</h3> -->
 <a  class="nav-link" href="{% url 'user_profile' %}">My Profile</a>
+<a href=" {% url 'add_product' %}"><button>Upload Product</button></a>
 <div class="container">
     <div class="row">
-        <h2 class="text-center">picha pale broo</h2>
+        <h3 class="trycss" >Place BG here</h3>
     </div>
-    <div class="row">
+    <div class="row mt-5 mb-5">
         <div class="col-3 text-center skinhome">
             <h3 class="homeh3">TAKE CARE OF YOUR SKIN</h3>
             <P class="homep">Get the best skin care products in the market.</P>
@@ -17,20 +18,11 @@
         <div class="col-3 text-center skinproduct">
             <img src="{{product.product_pic.url}}" alt="image" width="90%">
             <p>{{ product.product_description}}</p>
-            <a href=""><button> Order the product</button></a>
+            <a href=""><button>Contact the Seller</button></a>
         </div>
-        {% endfor %}
-        <!-- box flex-->
-        <div class="col-3 text-center">
-            <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">
-            <a href=""><button></button></a>
-        </div>
-        <div class="col-3 text-center">
-            <img src="{% static '/images/blackmakeup.jpg' %}" alt="image">
-            <a href=""><button></button></a>
-        </div>
+        {% endfor %}    
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-6">
             <img src="{% static '/images/blackmakeup.jpg' %}" alt="welcome" width="100%">
         </div>
