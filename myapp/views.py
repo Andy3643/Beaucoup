@@ -130,4 +130,16 @@ def signout(request):
     return redirect ("login")
 
 def chat (request):
-    return render (request,'product/chat.html')
+    username = request.GET.get('username')
+    
+    
+    
+    
+    return render (request,'product/chat.html',{'username':username})
+
+def send(request):
+    message = request.POST['message']
+    username = request.POST['username']
+    new_message = Message.objects.create(value=message, user=username)
+    new_message.save()
+    return HttpResponse('Message sent successfully')

@@ -96,5 +96,5 @@ class Product(models.Model):
 class Message(models.Model):
     text = models.CharField(max_length=255)
     date = models.DateTimeField(default=datetime.now, blank=True)
-    user = models.CharField(max_length=100)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     
