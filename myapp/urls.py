@@ -14,4 +14,5 @@ urlpatterns = [
     path('^add-product/$',views.new_product,name="add_product"),
     path('signout/',views.signout,name='signout'),
     path('chat/',views.chat,name='chat'),
+    path('send/',views.send,name='send'),
 ]

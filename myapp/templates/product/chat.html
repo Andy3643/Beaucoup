@@ -3,17 +3,25 @@
 
 
 {% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 mt-5">
+            <div class="content-section">
+                <form id="post-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="username" id="username" value="#username"/>
 
-<form id="post-form">
-    {% csrf_token %}
-    <input type="hidden" name="username" id="username" value="#username"/>
+                    <input type="text" name="message" id="message" width="100px" /><br><br>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+        <div class="col-3"></div>
 
-    <input type="text" name="message" id="message" width="100px" />
-    <input type="submit" value="Send">
-</form>
-
-
-
+    </div>
+</div>
 
 
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>

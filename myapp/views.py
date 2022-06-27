@@ -3,6 +3,7 @@ from .forms import *
 from django.contrib import messages
 from .models import *
 from django.contrib.auth import login,authenticate,logout
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -81,28 +82,8 @@ def profile(request):
     }
     return render(request,'users/profile.html',context)
 
+
 #@login_required
-# def new_product(request):
-#     '''
-#     upload new product
-#     '''
-#     current_user = request.user
-#     current_area_user = request.user.profile.area
-#     if current_area_user:
-#         if request.method == "POST":
-#             form = ProductUpload(request.POST) 
-#             if form.is_valid():
-#                 product_name = form.save(commit=False)
-#                 product_name.seller = current_user
-#                 product_name.area = current_area_user
-#                 product_name.save()
-#                 return redirect(Index_view)
-            
-#             else:
-#                 form = ProductUpload()
-#                 return render(request,"product/upload-product.html",{"form":form})
-
-
 def new_product(request):
     '''
     upload new product
