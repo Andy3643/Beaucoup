@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import *
 from django.contrib import messages
 from .models import *
-
+from django.contrib.auth import login,authenticate,logout
 
 
 # Create your views here.
@@ -107,6 +107,7 @@ def new_product(request):
     '''
     upload new product
     '''
+    current_user = request.user
     if request.method == "POST":
         form = ProductUpload(request.POST,request.FILES)
         if form.is_valid():
@@ -115,9 +116,18 @@ def new_product(request):
             product.save()
             return redirect('home')
     else:
-        form = Product()
+        form = ProductUpload()
     context = {
         "form":form
     }
 
     return render(request,"product/upload-product.html",context)
+
+
+def signout(request):
+    logout(request)
+    messages.success(request,"You have logged out, we will be glad to have you back again")
+    return redirect ("login")
+
+def chat (request):
+    return render (request,'product/chat.html')

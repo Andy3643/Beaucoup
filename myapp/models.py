@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from datetime import datetime
 # Create your models here.
 
 class Area(models.Model):
@@ -59,13 +60,16 @@ class Seller(models.Model):
     seller_bio = models.TextField(blank=True)
     area = models.ForeignKey(Area,on_delete=models.CASCADE,blank=True,null=True)
       
+    def __str__(self):
+        return f'{self.user.username} seller'
+    
 class Product(models.Model):
     '''
     Model for products class
     '''
     product_name = models.CharField(max_length=40)
     product_pic = CloudinaryField('image')
-    #user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     #area = models.ForeignKey(Area,on_delete=models.CASCADE)
     product_description = models.CharField(max_length=255)
     price = models.IntegerField()
@@ -88,4 +92,9 @@ class Product(models.Model):
     def search_product(cls,search_term):
         product = Product.objects.get(product_name__icontains=search_term)
         return product
+    
+class Message(models.Model):
+    text = models.CharField(max_length=255)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=100)
     

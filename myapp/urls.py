@@ -11,6 +11,7 @@ urlpatterns = [
     path('home/',views.Index_view,name="home"),
     path('^profile/',views.profile,name="profile"),
     path('^myprofile/$',views.user_info,name="user_profile"),
-     path('^add-product/$',views.new_product,name="add_product"),
-    
+    path('^add-product/$',views.new_product,name="add_product"),
+    path('signout/',views.signout,name='signout'),
+    path('chat/',views.chat,name='chat'),
 ]

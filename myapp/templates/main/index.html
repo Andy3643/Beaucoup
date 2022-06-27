@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+{% include 'navbar.html' %}
 <!-- <h3 class="trycss" >We're working broo</h3> -->
 <a  class="nav-link" href="{% url 'user_profile' %}">My Profile</a>
 <a href=" {% url 'add_product' %}"><button>Upload Product</button></a>
@@ -18,7 +19,7 @@
         <div class="col-3 text-center skinproduct">
             <img src="{{product.product_pic.url}}" alt="image" width="90%">
             <p>{{ product.product_description}}</p>
-            <a href=""><button>Contact the Seller</button></a>
+            <a href="{% url 'chat' %}"><button>Contact the Seller</button></a>
         </div>
         {% endfor %}    
     </div>
